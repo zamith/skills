@@ -6,7 +6,10 @@ This file tells Claude Code how this repo is organized.
 
 Skills are organized into bucket folders under `skills/`, one bucket per plugin:
 
-- `building/` — daily software-building workflow (grilling, PRDs, issues, autonomous implementation, understanding code, PR review)
+- `planning/` — shaping work before code (grilling, PRDs, issue slicing, prototypes, wayfinding, architecture)
+- `building/` — implementing and shipping (autonomous implementation, understanding code, PR review, handoff, writing cleanup)
+
+Cross-skill references use plugin-qualified names, e.g. `/planning:write-a-prd` or `/building:handoff`.
 
 Every skill must have:
 

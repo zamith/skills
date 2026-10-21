@@ -5,12 +5,29 @@
   },
   "metadata": {
     "description": "Zamith's personal collection of Claude Code skills for product development.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
+      "name": "planning",
+      "description": "Shape work before code: grill the idea, write a PRD, slice it into issues, prototype, chart big efforts, and zoom out on the architecture.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/planning/grill-me",
+        "./skills/planning/grill-with-docs",
+        "./skills/planning/improve-codebase-architecture",
+        "./skills/planning/prd-to-issues",
+        "./skills/planning/prototype",
+        "./skills/planning/setup-for-builders",
+        "./skills/planning/wayfinder",
+        "./skills/planning/write-a-prd",
+        "./skills/planning/zoom-out"
+      ]
+    },
+    {
       "name": "building",
-      "description": "Idea-to-implementation workflow: grill, write a PRD, slice into issues, implement autonomously, understand the code, and review the PRs.",
+      "description": "Implement and ship: work issues autonomously, understand the code, review and answer PRs, hand off, and capture what was learned.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -20,19 +37,12 @@
         "./skills/building/chief-of-staff",
         "./skills/building/compound",
         "./skills/building/explain",
-        "./skills/building/grill-me",
-        "./skills/building/grill-with-docs",
         "./skills/building/handoff",
-        "./skills/building/improve-codebase-architecture",
+        "./skills/building/humanizer",
         "./skills/building/issue-swarm",
         "./skills/building/issue-worker",
-        "./skills/building/prd-to-issues",
-        "./skills/building/prototype",
-        "./skills/building/setup-for-builders",
         "./skills/building/trace-flow",
-        "./skills/building/walkthrough",
-        "./skills/building/write-a-prd",
-        "./skills/building/zoom-out"
+        "./skills/building/walkthrough"
       ],
       "hooks": "./skills/building/chief-of-staff/hooks/hooks.json"
     }

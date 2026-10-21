@@ -1,12 +1,12 @@
 ---
 name: setup-for-builders
-description: Sets up an `## Agent skills` block in CLAUDE.md/AGENTS.md and `docs/agents/` so the building skills know this repo's domain-doc layout and where PRDs and issue files live. Run before first use of `write-a-prd`, `prd-to-issues`, `issue-worker`, or `grill-with-docs` — or if those skills appear to be missing context about where to read or write files.
+description: Sets up an `## Agent skills` block in CLAUDE.md/AGENTS.md and `docs/agents/` so the planning and building skills know this repo's domain-doc layout and where PRDs and issue files live. Run before first use of `write-a-prd`, `prd-to-issues`, `issue-worker`, or `grill-with-docs` — or if those skills appear to be missing context about where to read or write files.
 disable-model-invocation: true
 ---
 
 # Setup for Builders
 
-Scaffold the per-repo configuration that the building skills assume:
+Scaffold the per-repo configuration that the planning and building skills assume:
 
 - **Domain docs** — where `CONTEXT.md` and ADRs live, and how the skills should consume them
 - **PRDs and issues** — where `write-a-prd` writes PRDs, where `prd-to-issues` writes issue files, where `issue-worker` reads them from
@@ -95,4 +95,4 @@ Then write the two docs files using the seed templates in this skill folder as a
 Substitute the chosen domain-docs layout and PRD location into the templates before writing.
 ### 5. Done
 
-Tell the user the setup is complete and which building skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch the domain-doc layout or PRD location.
+Tell the user the setup is complete and which planning and building skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later — re-running this skill is only necessary if they want to switch the domain-doc layout or PRD location.

@@ -25,7 +25,7 @@ fix or the root cause may already be recorded.
 
 ## After solving a problem
 
-Run the `compound` skill (`/compound`) to capture the learning. Do not hand-write
+Run the `compound` skill (`/building:compound`) to capture the learning. Do not hand-write
 entries — the skill handles classification, overlap detection, and cross-product
 promotion to memory.
 

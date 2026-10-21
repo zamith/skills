@@ -5,7 +5,7 @@ description: >
   the repo's searchable knowledge base, and promote cross-product patterns to
   auto-memory. The back half of the build loop. Use after a fix lands, after an
   issue-swarm finishes, after a debugging session, or when the user says
-  "capture this", "document what we learned", "compound this", or runs /compound.
+  "capture this", "document what we learned", "compound this", or runs /building:compound.
 metadata:
   version: 0.4.0
 ---
@@ -30,7 +30,7 @@ If the user gave no context hint, first auto-scan the recent session and any tou
 
 ## Parameters
 
-- Context hint — optional free text after `/compound` ("the colocated-hooks Dockerfile fix"). Narrows the scan.
+- Context hint — optional free text after `/building:compound` ("the colocated-hooks Dockerfile fix"). Narrows the scan.
 - Store location — `docs/solutions/`. Flat directory; `track` lives in frontmatter, not in subfolders.
 
 ## Phase 0 — Scan auto-memory
