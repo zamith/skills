@@ -12,7 +12,7 @@ Run this once, when `projects/<slug>.md` does not exist yet.
    ```json
    { "autoCompactWindow": 200000, "permissions": { "deny": ["Read(<ledger>/**)", "Edit(<ledger>/**)", "Bash(*<ledger>*)"] } }
    ```
-   Write a chief settings file, `~/.claude/skills/chief-of-staff/projects/<slug>.chief.settings.json`, containing only `{ "autoCompactWindow": 200000 }`. Tell the user to start chiefs with `--settings` pointing at it (or run `/autocompact 200k`).
+   Write a chief settings file, `~/.claude/skills/chief-of-staff/projects/<slug>.chief.settings.json`, containing only `{ "autoCompactWindow": 400000 }`. Tell the user to start chiefs with `--settings` pointing at it (or run `/autocompact 200k`).
 2. **Mine.** Dispatch a subagent to mine the user's past sessions for this project. They are in `~/.claude/projects/<cwd with / replaced by ->*` (worktree folders included). It reads only the human-typed prompts and returns, in under 600 words:
    - the most-pasted links (trackers, epics, specs, PRs, artifacts), with counts;
    - the instructions the user repeats (branching, PR, review and style rules);

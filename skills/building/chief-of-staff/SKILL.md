@@ -83,10 +83,10 @@ Workers message you in the fixed format from [WORKER.md](WORKER.md). On each rep
 
 ## Context budget
 
-Answers get worse as a session's context grows, well before the 1M window. Workers compact at 200k tokens (`autoCompactWindow` in the worker settings). Keep every session, including yours, well under that.
+Answers get worse as a session's context grows, well before the 1M window. Workers compact at 200k tokens (`autoCompactWindow` in the worker settings); the chief compacts at 400k (chief settings), since it carries the whole project map. Keep every session well under its limit.
 
 - A worker that reports `NEED: restart me from handoff <path>` gets a fresh worker for the same ticket, without asking the user: launch it with the usual prompt plus "Continue from the handoff at <path>", record the new id in `now.md`, then stop and remove the old one. For aoe, the new worker needs a fresh title (see Dispatch).
-- The chief runs with `--settings <chief settings>` (Setup), which sets `autoCompactWindow: 200000` and nothing else. You cannot see your own token count, so don't rely on judging it: that setting is the trigger.
+- The chief runs with `--settings <chief settings>` (Setup), which sets `autoCompactWindow: 400000` and nothing else. You cannot see your own token count, so don't rely on judging it: that setting is the trigger.
 - Never launch a replacement chief on your own initiative. Stay in this session and let it compact in place: the compact hook re-runs Start, and the ledger carries everything across. Keep the ledger current so a compaction loses nothing. Launch a new chief only when the user explicitly asks for one.
 
 ## Board (when the brief's Setup names one)
