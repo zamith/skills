@@ -1,0 +1,54 @@
+{
+  "name": "zamith",
+  "owner": {
+    "name": "Zamith"
+  },
+  "metadata": {
+    "description": "Zamith's personal collection of Claude Code skills for reviewing, understanding, orchestrating and deploying software.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "review",
+      "description": "Work through PR review feedback and review PRs adversarially, posting findings back to GitHub.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/review/address-pr-comments",
+        "./skills/review/adversarial-pr-review"
+      ]
+    },
+    {
+      "name": "understand",
+      "description": "Explain code and changes, walk through a branch piece by piece, trace data across repos, and find deepening refactors.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/understand/explain",
+        "./skills/understand/walkthrough",
+        "./skills/understand/trace-flow",
+        "./skills/understand/improve-codebase-architecture"
+      ]
+    },
+    {
+      "name": "orchestrate",
+      "description": "Run long-lived work through a chief-of-staff session that dispatches workers, or an autonomous issue loop.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/orchestrate/chief-of-staff",
+        "./skills/orchestrate/afk-loop"
+      ],
+      "hooks": "./skills/orchestrate/chief-of-staff/hooks/hooks.json"
+    },
+    {
+      "name": "deploy",
+      "description": "Deploy and host apps on exe.dev VMs with Docker Compose and push-to-deploy.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/deploy/deploy-to-exe-dev"
+      ]
+    }
+  ]
+}

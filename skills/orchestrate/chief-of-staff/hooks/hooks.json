@@ -1,0 +1,17 @@
+{
+  "description": "After a compaction, re-inject the chief-of-staff Start steps and the ledger board into the chief session.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/skills/orchestrate/chief-of-staff/compact-hook.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

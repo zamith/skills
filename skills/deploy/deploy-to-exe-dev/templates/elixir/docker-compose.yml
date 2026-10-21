@@ -1,0 +1,41 @@
+# Elixir/Phoenix + Postgres stack for exe.dev.
+# Replace {{APP}} with your OTP app name (snake_case, from mix.exs).
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-{{APP}}}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: ${POSTGRES_DB:-{{APP}}_prod}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-{{APP}}}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      # Published to the VM host so the exe.dev proxy can reach it.
+      - "${PORT:-4000}:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "ecto://${POSTGRES_USER:-{{APP}}}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB:-{{APP}}_prod}"
+      PHX_HOST: ${PHX_HOST:?PHX_HOST is required}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?SECRET_KEY_BASE is required}
+      POOL_SIZE: ${POOL_SIZE:-10}
+    # Uncomment to persist user uploads across redeploys (the work tree is wiped
+    # on each `git checkout -f`, so writable state MUST live on a host volume).
+    # volumes:
+    #   - /home/exedev/uploads:/app/uploads
+
+volumes:
+  postgres_data:

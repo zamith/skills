@@ -1,0 +1,37 @@
+#!/bin/bash
+# Git push-to-deploy hook for exe.dev. Lives at /home/exedev/deploy.git/hooks/post-receive
+# on the VM (chmod +x). Pushing to the bare repo checks the code out into APP_DIR,
+# wires the persistent .env, and rebuilds the compose stack.
+set -euo pipefail
+
+APP_DIR=/home/exedev/app
+UPLOADS_DIR=/home/exedev/uploads
+ENV_FILE=/home/exedev/env/.env
+LOG=/home/exedev/deploy.log
+
+echo "$(date): Deployment started" | tee -a "$LOG"
+
+# Checkout the pushed code into the work tree (main, falling back to master).
+git --work-tree="$APP_DIR" --git-dir=/home/exedev/deploy.git checkout -f main 2>/dev/null \
+  || git --work-tree="$APP_DIR" --git-dir=/home/exedev/deploy.git checkout -f master
+
+cd "$APP_DIR"
+
+if [ ! -f docker-compose.yml ] && [ ! -f docker-compose.yaml ] && [ ! -f compose.yml ] && [ ! -f compose.yaml ]; then
+  echo "$(date): ERROR - No docker compose file found!" | tee -a "$LOG"
+  exit 1
+fi
+
+# .env lives outside the work tree so secrets are never committed and survive checkout -f.
+ln -sf "$ENV_FILE" "$APP_DIR/.env"
+
+echo "$(date): Building and starting containers..." | tee -a "$LOG"
+
+# Available to compose for optional ${UPLOADS_DIR} interpolation.
+export UPLOADS_DIR="$UPLOADS_DIR"
+export ENV_FILE="$ENV_FILE"
+
+docker compose down --remove-orphans 2>/dev/null || true
+docker compose up -d --build 2>&1 | tee -a "$LOG"
+
+echo "$(date): Deployment complete" | tee -a "$LOG"

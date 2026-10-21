@@ -1,0 +1,4 @@
+#!/bin/sh
+# Release migration command. Replace {{APP}} (release name) and {{MODULE}} (e.g. MyApp).
+cd -P -- "$(dirname -- "$0")"
+exec ./{{APP}} eval {{MODULE}}.Release.migrate
