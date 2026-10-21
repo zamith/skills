@@ -6,10 +6,7 @@ This file tells Claude Code how this repo is organized.
 
 Skills are organized into bucket folders under `skills/`, one bucket per plugin:
 
-- `review/` — PR review workflows
-- `understand/` — explaining and mapping code
-- `orchestrate/` — long-running, multi-session work
-- `deploy/` — hosting and deployment
+- `building/` — daily software-building workflow (grilling, PRDs, issues, autonomous implementation, understanding code, PR review)
 
 Every skill must have:
 

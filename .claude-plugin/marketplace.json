@@ -4,51 +4,37 @@
     "name": "Zamith"
   },
   "metadata": {
-    "description": "Zamith's personal collection of Claude Code skills for reviewing, understanding, orchestrating and deploying software.",
-    "version": "0.1.0"
+    "description": "Zamith's personal collection of Claude Code skills for product development.",
+    "version": "0.2.0"
   },
   "plugins": [
     {
-      "name": "review",
-      "description": "Work through PR review feedback and review PRs adversarially, posting findings back to GitHub.",
+      "name": "building",
+      "description": "Idea-to-implementation workflow: grill, write a PRD, slice into issues, implement autonomously, understand the code, and review the PRs.",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/review/address-pr-comments",
-        "./skills/review/adversarial-pr-review"
-      ]
-    },
-    {
-      "name": "understand",
-      "description": "Explain code and changes, walk through a branch piece by piece, trace data across repos, and find deepening refactors.",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/understand/explain",
-        "./skills/understand/walkthrough",
-        "./skills/understand/trace-flow",
-        "./skills/understand/improve-codebase-architecture"
-      ]
-    },
-    {
-      "name": "orchestrate",
-      "description": "Run long-lived work through a chief-of-staff session that dispatches workers, or an autonomous issue loop.",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/orchestrate/chief-of-staff",
-        "./skills/orchestrate/afk-loop"
+        "./skills/building/address-pr-comments",
+        "./skills/building/adversarial-pr-review",
+        "./skills/building/afk-loop",
+        "./skills/building/chief-of-staff",
+        "./skills/building/compound",
+        "./skills/building/explain",
+        "./skills/building/grill-me",
+        "./skills/building/grill-with-docs",
+        "./skills/building/handoff",
+        "./skills/building/improve-codebase-architecture",
+        "./skills/building/issue-swarm",
+        "./skills/building/issue-worker",
+        "./skills/building/prd-to-issues",
+        "./skills/building/prototype",
+        "./skills/building/setup-for-builders",
+        "./skills/building/trace-flow",
+        "./skills/building/walkthrough",
+        "./skills/building/write-a-prd",
+        "./skills/building/zoom-out"
       ],
-      "hooks": "./skills/orchestrate/chief-of-staff/hooks/hooks.json"
-    },
-    {
-      "name": "deploy",
-      "description": "Deploy and host apps on exe.dev VMs with Docker Compose and push-to-deploy.",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/deploy/deploy-to-exe-dev"
-      ]
+      "hooks": "./skills/building/chief-of-staff/hooks/hooks.json"
     }
   ]
 }

@@ -1,4 +1,0 @@
-#!/bin/sh
-# Release server command. Replace {{APP}} with the release name.
-cd -P -- "$(dirname -- "$0")"
-PHX_SERVER=true exec ./{{APP}} start
